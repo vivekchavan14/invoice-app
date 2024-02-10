@@ -29,6 +29,7 @@ const EditableField = (props) => {
         aria-label={props.cellData.name}
         onChange={props.onItemizedItemEdit}
         required
+        readOnly={props.readOnly}
       />
     </InputGroup>
   );

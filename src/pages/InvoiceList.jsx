@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useInvoiceListData } from "../redux/hooks";
 import { useDispatch } from "react-redux";
 import { deleteInvoice } from "../redux/invoicesSlice";
+import ProductList from "../components/ProductList";
 
 const InvoiceList = () => {
   const { invoiceList, getOneInvoice } = useInvoiceListData();
@@ -83,6 +84,8 @@ const InvoiceList = () => {
             </div>
           )}
         </Card>
+
+        <ProductList />
       </Col>
     </Row>
   );

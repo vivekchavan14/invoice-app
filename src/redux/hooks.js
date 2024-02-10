@@ -20,3 +20,28 @@ export const useInvoiceListData = () => {
     listSize,
   };
 };
+
+export const useProductList = () => {
+  const productList = useSelector((state) => state.products);
+
+  const getOneProduct = (productId) => {
+    const product = productList.find((product) => {
+      if (product.id === productId) {
+        return product;
+      }
+    });
+
+    if (product) {
+      return product;
+    } else {
+      return null;
+    }
+  };
+
+  const totalProduct = productList.length;
+  return {
+    productList,
+    getOneProduct,
+    totalProduct,
+  };
+};

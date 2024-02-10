@@ -12,20 +12,20 @@ const invoicesSlice = createSlice({
     },
     updateInvoice: (state, action) => {
       const index = state.findIndex(
-        (invoice) => invoice.id === action.payload.id
+        (invoice) => String(invoice.id) === String(action.payload.id)
       );
       if (index !== -1) {
         state[index] = action.payload.updatedInvoice;
       }
     },
+    updateWholeInvoice: (state, action) => {
+      return action.payload;
+    },
   },
 });
 
-export const {
-  addInvoice,
-  deleteInvoice,
-  updateInvoice,
-} = invoicesSlice.actions;
+export const { addInvoice, deleteInvoice, updateInvoice, updateWholeInvoice } =
+  invoicesSlice.actions;
 
 export const selectInvoiceList = (state) => state.invoices;
 

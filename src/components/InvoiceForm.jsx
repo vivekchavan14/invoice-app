@@ -55,13 +55,13 @@ const InvoiceForm = () => {
           discountAmount: "0.00",
           currency: "$",
           items: [
-            {
-              itemId: 0,
-              itemName: "",
-              itemDescription: "",
-              itemPrice: "1.00",
-              itemQuantity: 1,
-            },
+            // {
+            //   itemId: 0,
+            //   itemName: "",
+            //   itemDescription: "",
+            //   itemPrice: "1.00",
+            //   itemQuantity: 1,
+            // },
           ],
         }
   );
@@ -78,13 +78,15 @@ const InvoiceForm = () => {
     handleCalculateTotal();
   };
 
-  const handleAddEvent = () => {
+  //also give the item productid, so when we update a product than we traverse all
+  // ivoices which contain that product and udpate it
+  const handleAddEvent = (itemId, itemName, itemDescription, itemPrice) => {
     const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
     const newItem = {
-      itemId: id,
-      itemName: "",
-      itemDescription: "",
-      itemPrice: "1.00",
+      itemId: itemId,
+      itemName: itemName,
+      itemDescription: itemDescription,
+      itemPrice: itemPrice,
       itemQuantity: 1,
     };
     setFormData({
@@ -307,6 +309,7 @@ const InvoiceForm = () => {
               onRowDel={handleRowDel}
               currency={formData.currency}
               items={formData.items}
+              invoiceId={formData.id}
             />
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
